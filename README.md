@@ -14,9 +14,9 @@ Basic setup for a service to generate discount codes using:
 
 ### Prerequisites
 - Docker
-- Make (optional, see below)
-- Python and Requests (optional for running API tests)
-- Pip-tools (optional for updating requirements.txt)
+- Make
+- Python and Requests (optional, for running API tests)
+- Pip-tools (optional, for updating requirements.txt)
 
 ### Usage
 
@@ -25,4 +25,10 @@ Build and start the service with:
 $ make build start
 ```
 
-Service should now be listening to `http://localhost:5000` and a test endpoint at [http://localhost:5000/test](http://localhost:5000/test) See [Makefile](./Makefile) for more targets, their details and commands to run service without make.
+Service should now be listening to `http://localhost:5000`. Test with API documentation [link](http://localhost:5000/apidocs).
+
+See [Makefile](./Makefile) for more details and fow how to run without make.
+
+
+### Tests
+If you have Python installed the API tests can be run with ```$ make run-tests```. Note that the test suite assumes that the database is empty at start so restarting the service between runs is a good idea.
