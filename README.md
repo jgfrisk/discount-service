@@ -27,7 +27,7 @@ $ make build start
 
 Service should now be listening to `http://localhost:5000`. Test with API documentation [link](http://localhost:5000/apidocs).
 
-See [Makefile](./Makefile) for more details and fow how to run without make.
+See [Makefile](./Makefile) for more commands and their details.
 
 
 ### Tests
