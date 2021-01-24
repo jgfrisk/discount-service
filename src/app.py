@@ -1,4 +1,5 @@
 from flask import Flask, jsonify, request, abort
+from flasgger import Swagger, swag_from
 
 from discounts import create_discount_codes
 from models import Discount, db
@@ -15,6 +16,9 @@ db.init_app(app)
 app.app_context().push()
 db.create_all()
 
+# Init Flassger
+swagger = Swagger(app)
+
 
 @app.route("/test")
 def test():
@@ -23,6 +27,7 @@ def test():
 
 
 @app.route("/v1/create", methods=["POST"])
+@swag_from("swagger/create_validation.yml", validation=True)
 def create_discounts():
     """
     Generate a number of discount codes for a brand, insert them
@@ -47,6 +52,7 @@ def create_discounts():
 
 
 @app.route("/v1/fetch/<string:brand>/<string:user>", methods=["GET"])
+@swag_from("swagger/fetch_validation.yml", validation=False)
 def fetch_discount(brand: str, user: str):
     """
     Reserve and fetch a discount code for a specified brand and user

@@ -1,0 +1,38 @@
+Fetch a discount code
+Reserve and get a discount code for a brand and user
+---
+tags:
+  - discount
+produces:
+  - application/json
+parameters:
+  - name: brand
+    in: path
+    type: string
+    required: true
+    description: Brand name
+    default: brand1
+
+  - name: user
+    in: path
+    type: string
+    required: true
+    description: User name
+    default: user1
+
+responses:
+  200:
+    description: A json object with a discount_code key
+    schema:
+      type: object
+      items:
+        type: object
+    examples:
+      application/json: {"discount_code":"WagN58GKT8"}
+
+  404:
+    description: An object describing the error
+    schema:
+      type: object
+    examples:
+      application/json: {"error": "404 Not Found: No codes for brand exist" }
