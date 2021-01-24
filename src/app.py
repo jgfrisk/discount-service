@@ -27,6 +27,18 @@ db.create_all()
 swagger = Swagger(app)
 
 
+@app.errorhandler(404)
+def resource_not_found(e):
+    """ Custom error handler to return a json formatter error """
+    return jsonify(error=str(e)), 404
+
+
+@app.errorhandler(500)
+def resource_not_found(e):
+    """ Custom error handler to return a json formatter error """
+    return jsonify(error=str(e)), 500
+
+
 @app.route("/test")
 def test():
     """ Helper endpoint to check if service is up and responding """
