@@ -19,3 +19,6 @@ stop:
 	docker stop  $(SERVICE_NAME) || true
 
 restart: stop start
+
+run-tests-api:
+	python tests/test_api.py
