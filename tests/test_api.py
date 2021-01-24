@@ -37,5 +37,23 @@ class APITests(unittest.TestCase):
         self.assertEqual(response.status_code, 404)
 
 
+    def test_create_bad_body_validation1(self):
+        response = requests.post(self.base_url + "/create", json={"brand": "testbrand3", "number_to_create": "10"})
+
+        self.assertEqual(response.status_code, 400)
+
+
+    def test_create_bad_body_validation2(self):
+        response = requests.post(self.base_url + "/create", json={"number_to_create": 10})
+
+        self.assertEqual(response.status_code, 400)
+
+
+    def test_create_bad_body_validation3(self):
+        response = requests.post(self.base_url + "/create", json={"brand": "testbrand"})
+
+        self.assertEqual(response.status_code, 400)
+
+
 if __name__ == "__main__":
     unittest.main()
