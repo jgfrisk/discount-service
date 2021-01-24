@@ -6,6 +6,9 @@ Basic setup for a service to generate discount codes using:
 - Python 3.8
 - Flask
 - Gunicorn
+- Flask-SQLAlchemy
+- Flasgger
+- SQLite
 
 ## Running the service
 
