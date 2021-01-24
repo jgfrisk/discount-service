@@ -22,4 +22,4 @@ Build and start the service with:
 $ make build start
 ```
 
-Service should now be listening to `http://localhost:5000`. See [Makefile](./Makefile) for more details.
+Service should now be listening to `http://localhost:5000` and a test endpoint at [http://localhost:5000/test](http://localhost:5000/test) See [Makefile](./Makefile) for more targets, their details and commands to run service without make.
