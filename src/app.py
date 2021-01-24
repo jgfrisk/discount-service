@@ -1,4 +1,4 @@
-from flask import Flask, jsonify, request
+from flask import Flask, jsonify, request, abort
 
 from discounts import create_discount_codes
 from models import Discount, db
@@ -44,3 +44,40 @@ def create_discounts():
 
 
     return jsonify(discount_codes)
+
+
+@app.route("/v1/fetch/<string:brand>/<string:user>", methods=["GET"])
+def fetch_discount(brand: str, user: str):
+    """
+    Reserve and fetch a discount code for a specified brand and user
+    """
+
+    # find and reserve a code for (brand, user) OR
+    # return a previously reserved code if one exists
+    record = Discount.query.filter_by(user=user, brand=brand).first()
+
+    if record != None:
+        # Previously reserved code exists
+        discount_code = record.code
+
+    else:
+        # Check that brand has unreserved codes
+        unreserved_record = Discount.query.filter_by(brand=brand).filter(Discount.user == None).first()
+
+        if unreserved_record != None:
+
+            # update database
+            unreserved_record.user = user
+            db.session.merge(unreserved_record)
+            db.session.commit()
+
+            discount_code = unreserved_record.code
+
+            # Brand can be notified here
+            print(f"Notification for brand: {brand} and user: {user} ")
+
+        else:
+            abort(404, "No codes for brand exist")
+
+
+    return jsonify({"discount_code": discount_code})
