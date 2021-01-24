@@ -11,6 +11,13 @@ app = Flask(__name__)
 app.config["SQLALCHEMY_DATABASE_URI"] = "sqlite:////tmp/local_file_database.sqlite"
 app.config["SQLALCHEMY_TRACK_MODIFICATIONS"] = False  # suppress warning
 
+# Configure Swagger UI parameters
+app.config["SWAGGER"] = {
+    "title": "Discount Service",
+    "version": "0.1",
+    "uiversion": 3,
+}
+
 # Initialize database engine, create tables and setup application context
 db.init_app(app)
 app.app_context().push()
