@@ -19,21 +19,21 @@ class APITests(unittest.TestCase):
         self.assertEqual(len(response.json()), 10)
 
     def test_fetch1(self):
-        response = requests.get(self.base_url + "/fetch/testbrand1/user1")
+        response = requests.get(self.base_url + "/discount/fetch/testbrand1/user1")
         self.assertTrue("discount_code" in response.json())
 
 
     def test_fetch_brand_missing(self):
-        response = requests.get(self.base_url + "/fetch/missingbrand/user1")
+        response = requests.get(self.base_url + "/discount/fetch/missingbrand/user1")
         self.assertEqual(response.status_code, 404)
 
 
     def test_fetch_all(self):
         for counter in range(1,3+1):
-            response = requests.get(self.base_url + f"/fetch/testbrand2/user{counter}")
+            response = requests.get(self.base_url + f"/discount/fetch/testbrand2/user{counter}")
             self.assertEqual(response.status_code, 200)
         # No more codes should exist
-        response = requests.get(self.base_url + "/fetch/testbrand2/user4")
+        response = requests.get(self.base_url + "/discount/fetch/testbrand2/user4")
         self.assertEqual(response.status_code, 404)
 
 

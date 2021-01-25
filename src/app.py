@@ -70,7 +70,7 @@ def create_discounts():
     return jsonify(discount_codes)
 
 
-@app.route("/v1/fetch/<string:brand>/<string:user>", methods=["GET"])
+@app.route("/v1/discount/fetch/<string:brand>/<string:user>", methods=["GET"])
 @swag_from("swagger/fetch_validation.yml", validation=False)
 def fetch_discount(brand: str, user: str):
     """
