@@ -45,7 +45,7 @@ def test():
     return jsonify({"status": "OK"}), 200
 
 
-@app.route("/v1/create", methods=["POST"])
+@app.route("/v1/discount/create", methods=["POST"])
 @swag_from("swagger/create_validation.yml", validation=True)
 def create_discounts():
     """
