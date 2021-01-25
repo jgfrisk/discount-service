@@ -43,7 +43,7 @@ To demo the input value validation for the create endpoint you can try to create
 
 
 ### Tests
-If you have Python installed the API tests can be run with ```$ make run-tests```. Note that the test suite assumes that the database is empty at start so restarting the service between runs is a good idea.
+If you have Python installed the API tests can be run with ```$ make run-tests-api```. Note that the test suite assumes that the database is empty at start so restarting the service between runs is a good idea.
 
 
 ## Notes about improvements with more time and for production readiness
