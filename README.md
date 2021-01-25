@@ -44,3 +44,18 @@ To demo the input value validation for the create endpoint you can try to create
 
 ### Tests
 If you have Python installed the API tests can be run with ```$ make run-tests```. Note that the test suite assumes that the database is empty at start so restarting the service between runs is a good idea.
+
+
+## Notes about improvements with more time and for production readiness
+
+- Implement authorization! Use bearer token or perform lookup to user service
+- Use something like 'webargs' for parameter validation
+- Implement better API documentation also for error codes
+- Better modularization of the code and break out business logic to separate class/file
+- Better error handling with more explicit info like user/brand not found and appropriate HTTP codes etc
+- Paginated API for handling larger responses
+- Use a proper SQL database and adapt the code (tables do not need to be created on start)
+- Logging setup in proper json format
+- Metrics for Prometheus/StatsD etc.
+- Liveness/readiness probes for K8s
+- Asynchronous workers
