@@ -26,7 +26,7 @@ $ make build start
 ```
 
 
-Service should now be listening to `http://localhost:5000`. Test with API documentation [link](http://localhost:5000/apidocs). <br>
+Service should now be listening to `localhost:5000`. Test with API documentation at:  [http://localhost:5000/apidocs](http://localhost:5000/apidocs). <br>
 (Note that this guide assumes that your Docker installation exposes services on `localhost`)
 
 See [Makefile](./Makefile) for more commands and their details.
